@@ -25,7 +25,7 @@ Após a clonagem desse repositório, você devera abrir duas instâncias de term
 Para rodar o backend, o comando a ser dado no terminal é: **dotnet run**. Para mais detalhes, ver a [documentação](./backend/README.md).
 Para rodar o frontend, o comando a ser dado no terminal é: **yarn start**. Para mais detalhes, ver a [documentação](./frontend/README.md).
 
-Os dados para acesso podem ser inseridos no banco dados via *REST client* como **Insomnia** ou **Postman**, pelas rotas descritas na documentação do backend, mas o banco de dados em povoado com um usuário: *email:* admin@admin e *password:* admin. E oito salas de reunião.
+Os dados para acesso podem ser inseridos no banco dados via *REST client* como **Insomnia** ou **Postman**, pelas rotas descritas na documentação do backend, mas o banco de dados vem povoado com um usuário: *email:* admin@admin e *password:* admin, e oito salas de reunião.
 
 ## O que esperar do sistema
 A tela de login:
