@@ -41,7 +41,7 @@ A API possui quatro rotas:
 * ### Users
   Possui 2 Verbos HTTP, **GET** e **POST**. o *Get* lista as reuniões, e o *POST* cadastra novas reuniões, que deverão ser enviadas no formato JSON contendo *"title"*, *"room"*, *"startTime"* e *"endTime"*.
 
-### Cosntruído com
+### Construído com
 
 * [C#](https://docs.microsoft.com/pt-br/dotnet/csharp/)
 * [.Net Core](https://docs.microsoft.com/pt-br/dotnet/core/)
