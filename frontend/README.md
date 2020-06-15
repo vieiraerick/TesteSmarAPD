@@ -1,68 +1,47 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Teste SmarAPD
+### Frontend do sistema de reserva de salas de reunião
+Por Erick Vieira
 
-## Available Scripts
+Este repositório é dedicado ao frontend do sistema de reserva de salas de reunião proposto como teste da empresa SmarAPD.
+Esta aplicação foi construída utilizando o **React JS** e consome a API REST contida na pasta *backend* desse reposítorio. Com essa aplicação é possível realizar o login no sistema e agendar uma reunião com data e hora para início e término, sistema agendará a reunião ou retornará uma mensagem para avisar que a sala já está ocupada.
 
-In the project directory, you can run:
+## Índice
 
-### `yarn start`
+<!--ts-->
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* [Como usar?](#como-usar?)
+* [Construído com](#construído-com)
+* [Versionamento](#versionamento)
+* [Autor](#autor)
+* [Licença](#licença)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+<!--te-->
 
-### `yarn test`
+### Como usar?
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Após a clonagem desse repositório, você devera abrir um terminal de comando na pasta raiz desse projeto, ou navegar até ela através do terminal.
+Para que seja possível utilizar é importa ter o [**Yarn Packger**](https://yarnpkg.com/) instalado em sua máquina.
+Com os passos acima feitos, rode *yarn* no terminal para que os pacotes e dependencias necessários sejam instalados, então rode *yarn start* para iniciar o frontend.
+Antes de você realizar qualquer modificação uma tela como esse deverá ser exibida em seu navegador:
+![login](./gitImages/login.png)
 
-### `yarn build`
+### Construído com
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* [Javascript](https://www.javascript.com/)
+* [Node.js](https://nodejs.org/en/)
+* [React](https://pt-br.reactjs.org/)
+* [Redux](https://redux.js.org/)
+* [Redux Saga](https://github.com/redux-saga/redux-saga)
+* [Axios](https://github.com/axios/axios)
+* [Styled Components](https://styled-components.com/)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Versionamento
+Eu usei o [Git](https://git-scm.com/) para genrenciar o versionamento.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Autor
 
-### `yarn eject`
+* **Erick Vieira** [vieiraerick](https://github.com/vieiraerick)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Licença
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Este projeto está sob a licença GNU V3, veja [License.md](LICENSE) para mais detalhes.
