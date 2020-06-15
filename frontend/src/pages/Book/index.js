@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
 import DatePicker from 'react-datepicker';
 import * as Yup from 'yup';
+
+import api from '~/services/api';
 
 import { bookRoomRequest } from '~/store/modules/book/actions';
 
@@ -18,32 +20,31 @@ const schema = Yup.object().shape({
 export default function Book() {
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
-  const [reunion, setReunion] = useState();
+  const [rooms, setRooms] = useState([]);
 
-  const rooms = ['Sala 1', 'Sala 2', 'Sala 3', 'Sala 4', 'Sala 5'];
+  useEffect(() => {
+    async function loadRooms() {
+      const response = await api.get('rooms');
+
+      setRooms(response.data);
+    }
+
+    loadRooms();
+  }, []);
 
   const dispatch = useDispatch();
 
-  function handleSubmit({ title, room }) {
-    setReunion({
-      title,
-      room,
-      start: startDate,
-      end: endDate,
-    });
-    dispatch(bookRoomRequest(reunion));
+  function handleSubmit({
+    title,
+    room,
+    startTime = startDate,
+    endTime = endDate,
+  }) {
+    dispatch(bookRoomRequest({ title, room, startTime, endTime }));
   }
 
   function handleSuccessModal() {
     document.querySelector("div[id='success']").classList.add('hide');
-  }
-
-  function handleFailureModal() {
-    document.querySelector("div[id='failure']").classList.add('hide');
-  }
-
-  function handleAnotherRoom() {
-    alert('Remarcar');
   }
 
   return (
@@ -56,7 +57,9 @@ export default function Book() {
         <Input name="room" list="rooms" placeholder="Escolha uma sala" />
         <datalist id="rooms">
           {rooms.map((room) => (
-            <option value={room}>{room}</option>
+            <option key={room.id} value={room.name}>
+              {room.name}
+            </option>
           ))}
         </datalist>
         <p>Hora de início</p>
@@ -88,20 +91,11 @@ export default function Book() {
           Reservar Sala
         </button>
       </Form>
-      <Modal id="success" class="hide">
+      <Modal className="hide" id="success">
         <section>
           <p>Agendamento concluído</p>
           <button onClick={handleSuccessModal}>X</button>
         </section>
-      </Modal>
-      <Modal id="failure" class="hide">
-        <section>
-          <p>Sala Ocupada</p>
-          <button onClick={handleFailureModal}>X</button>
-        </section>
-        <nav>
-          <button onClick={handleAnotherRoom}>Escolher outra sala</button>
-        </nav>
       </Modal>
     </Container>
   );

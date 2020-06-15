@@ -8,11 +8,11 @@ import { bookRoomSuccess, bookRoomFailure } from './actions';
 
 export function* bookRoom({ payload }) {
   try {
-    const { title, room, start, end } = payload.data;
+    const { title, room, startTime, endTime } = payload.data;
     const now = new Date();
     const limit = addHours(now, 2);
 
-    if (!start) {
+    if (!startTime) {
       document
         .querySelector("input[name= 'startDatePicker']")
         .classList.add('uncorrect');
@@ -22,7 +22,7 @@ export function* bookRoom({ payload }) {
       return;
     }
 
-    if (!end) {
+    if (!endTime) {
       document
         .querySelector("input[name= 'endDatePicker']")
         .classList.add('uncorrect');
@@ -32,7 +32,7 @@ export function* bookRoom({ payload }) {
       return;
     }
 
-    if (start < limit) {
+    if (startTime < limit) {
       document
         .querySelector("input[name= 'startDatePicker']")
         .classList.add('uncorrect');
@@ -41,7 +41,7 @@ export function* bookRoom({ payload }) {
 
       return;
     }
-    if (start >= end) {
+    if (startTime >= endTime) {
       document
         .querySelector("input[name= 'endDatePicker']")
         .classList.add('uncorrect');
@@ -51,20 +51,19 @@ export function* bookRoom({ payload }) {
       return;
     }
 
-    const reunion = {
+    const response = yield call(api.post, 'reunions', {
       title,
       room,
-      start,
-      end,
-    };
-
-    const response = yield call(api.put, 'users', reunion);
+      startTime,
+      endTime,
+    });
 
     document.querySelector("div[id='success']").classList.remove('hide');
 
     yield put(bookRoomSuccess(response.data));
   } catch (err) {
-    toast.error('Erro ao atualizar perfil, confira os seus dados!');
+    const { data } = err.response;
+    toast.error(data.message);
 
     yield put(bookRoomFailure());
   }

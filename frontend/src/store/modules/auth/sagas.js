@@ -10,16 +10,16 @@ export function* signIn({ payload }) {
   try {
     const { email, password } = payload;
 
-    const response = yield call(api.post, 'sessions', {
+    const response = yield call(api.post, 'auth', {
       email,
       password,
     });
 
-    const { token, user } = response.data;
+    const { token } = yield response.data;
 
     api.defaults.headers.Authorization = `Bearer ${token}`;
 
-    yield put(signInSuccess(token, user));
+    yield put(signInSuccess(token));
 
     history.push('/book');
   } catch (err) {
